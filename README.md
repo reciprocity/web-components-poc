@@ -14,10 +14,26 @@ Serve with `npm run serve`. Build with `npm run build`.
 # Size reports:
 
   File                            Size                                             Gzipped
-*my-web-component - Bare*
+*my-web-component*
   dist/my-web-component.min.js    8.73 KiB                                         3.72 KiB
   dist/my-web-component.js        30.05 KiB                                        8.18 KiB
 
-*my-web-component Vue inlined*
+*my-web-component - Vue inlined*
   dist/my-web-component.min.js    73.19 KiB                                        26.51 KiB
   dist/my-web-component.js        231.82 KiB                                       63.93 KiB
+
+*multiselect*
+  dist/my-web-component.min.js    100.41 KiB                                       28.59 KiB
+  dist/my-web-component.js        166.34 KiB                                       42.07 KiB
+
+*multiselect - Vue inlined*
+  dist/my-web-component.min.js    229.08 KiB                                       73.82 KiB
+  dist/my-web-component.js        566.37 KiB                                       152.64 KiB
+
+*zenlib*
+  dist/my-web-component.min.js    501.95 KiB                                       132.81 KiB
+  dist/my-web-component.js        2802.01 KiB                                      776.84 KiB
+
+*zenlib - Vue inlined*
+  dist/zenlib-wcs.min.js    694.96 KiB                                          203.42 KiB
+  dist/zenlib-wcs.js        3402.26 KiB                                         945.19 KiB
