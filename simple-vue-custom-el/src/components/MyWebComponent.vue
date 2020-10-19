@@ -1,7 +1,8 @@
 <template>
   <div class="my-web-component">
-    <h1>Simple Vue WC</h1>
+    <h1>Simple Vue WCx</h1>
     <div>Dynamic: {{ msg }}</div>
+    <input type="text" value="start" @input="clicked">
     <div>Length = {{ arr.length }}</div>
   </div>
 </template>
@@ -15,6 +16,12 @@
         type: Array,
         default: () => []
       }
+    },
+    methods: {
+      clicked() {
+        console.log('click1');
+        this.$emit('clicked', 'sth');
+      },
     }
   }
 </script>

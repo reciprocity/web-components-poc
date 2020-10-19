@@ -37,3 +37,14 @@ Serve with `npm run serve`. Build with `npm run build`.
 *zenlib - Vue inlined*
   dist/zenlib-wcs.min.js    694.96 KiB                                          203.42 KiB
   dist/zenlib-wcs.js        3402.26 KiB                                         945.19 KiB
+
+
+# To test Multiselect wc built within Zenlib...
+To test Multiselect wc built with Zenlib command make symbolic links of `zenlib/dist` to  to `/vue-app/public/zenlib-wc` and `angular-app/src/assets/zenlib-wc`
+
+simple component - build with wrapper: `simple/npm run build:mwc` - also copies js file
+build dropdown with wrapper: `zenlib2/npm run build:multiselect-wc`
+
+# Vue custom elements lib
+use .umd.js when building with **vue custom elements**
+- Note: Doesn't pick up styles
