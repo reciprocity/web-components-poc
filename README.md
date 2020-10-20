@@ -45,6 +45,9 @@ To test Multiselect wc built with Zenlib command make symbolic links of `zenlib/
 simple component - build with wrapper: `simple/npm run build:mwc` - also copies js file
 build dropdown with wrapper: `zenlib2/npm run build:multiselect-wc`
 
-# Vue custom elements lib
+# Vue custom element lib
 use .umd.js when building with **vue custom elements**
 - Note: Doesn't pick up styles
+
+To build my-web-component with vue custom element and copy it to vue and angular app:
+`/simple-vue-custom-el/yarn build:custom-el`
