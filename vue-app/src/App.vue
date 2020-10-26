@@ -1,19 +1,29 @@
 <template>
   <div id="app">
-    {{ options }}
-    <p>Selected option: <span style="color: #f00;">{{selected}}</span></p>
-    <zen-multiselect
-      class="multisel"
-      :options.prop="options"
-      :value.prop="selected"
-      :placeholder="'jan'"
-      :label="'label'"
-      @open="onDropdownChange"
-      @input="onInput"
-      :custom-label.prop="getName"
-    >
-    </zen-multiselect>
-    <my-web-component :msg="msg" :arr.prop="options" @clicked="onDropdownChange"></my-web-component>
+    <div class="multiselect-container">
+      <p>Custom element:</p>
+      <zen-multiselect2
+        id="multiselect1"
+        class="multisel"
+        :options="JSON.stringify(options)"
+        :value="JSON.stringify(selected)"
+        placeholder="Choose!"
+        :show-checkboxes="true"
+        :allow-empty="true"
+        label="label"
+        @input="onInput"
+        multiple="true"
+        track-by="value"
+      >
+      </zen-multiselect2>
+    </div>
+    <p><b>Selected:</b> <small>{{ selected }}</small></p>
+    <button @click="addItem()">Add item</button>
+
+    <my-web-component :msg="msg" :arr="JSON.stringify(options)" @clicked="logEvent($event)">
+    </my-web-component>
+    <my-web-component2 :msg="msg" :arr="JSON.stringify(options)" @clicked="logEvent($event)">
+    </my-web-component2>
     <input style="display: block; margin:auto" type="text" v-model="msg"/>
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
@@ -28,54 +38,37 @@ export default {
   data: () => ({
     msg: 'empty',
     selected: '',
-    options: [
-      {
-        value: 'initial1',
-        label: 'Initial 1',
-      },
-      {
-        value: 'initial2',
-        label: 'Initial 2',
-      },
-    ],
+    options: [1, 2, 3].map((n) => ({ value: `initial${n}`, label: `Initial ${n}` })),
   }),
   components: {
     HelloWorld,
   },
   mounted() {
-    const multiselect = document.getElementsByTagName('zen-multiselect')[0];
-    multiselect.addEventListener('open', (event) => { console.log('[Event]', event.detail); });
-
-    setTimeout(() => {
-      this.options = [
-        {
-          value: 'option1',
-          label: 'Option 1',
-        },
-        {
-          value: 'option2',
-          label: 'Option 2',
-        },
-      ];
-      [this.selected] = this.options;
-    }, 2000);
+    const multiselect = document.querySelector('#multiselect1');
+    multiselect.customLabel = (opt) => {
+      if (Array.isArray(opt)) {
+        return opt.map((n) => n.label).join(', ');
+      }
+      return opt.label;
+    };
   },
   methods: {
-    onDropdownChange() {
-      console.log('opened');
-    },
-    onInput(val) {
-      console.log('val', val);
-      [this.selected] = val.detail;
     },
     getName(opt) {
       return `${opt.label} jan`;
+    },
+    addItem() {
+      const index = this.options.length + 1;
+      this.options.push({ label: `New ${index}`, value: `new${index}` });
+    },
+    onInput(event) {
+      [this.selected] = event.detail;
     },
   },
 };
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -85,9 +78,8 @@ export default {
   margin-top: 60px;
 }
 
-.multisel {
+.multiselect-container {
   max-width: 300px;
-  background-color: #f00;
   margin: auto;
 }
 </style>
