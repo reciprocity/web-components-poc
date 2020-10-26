@@ -33,7 +33,7 @@
             "scripts": [
               "src/assets/js/my-web-component.js",
               "src/assets/js/vanilla-comp.js",
-              "src/assets/zenlib-wc/zen-multiselect.js"
+              "src/assets/zenlib-wc/zen-multiselect2.js"
             ]
           },
           "configurations": {
