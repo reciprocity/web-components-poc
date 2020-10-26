@@ -10,15 +10,19 @@ export class AppComponent {
   title = 'reci-angular-vue-components';
   msg = new FormControl('');
   open = false;
+  selected = [];
+  options = [
+    { value: 'val1', label: 'Item 1' },
+    { value: 'val2', label: 'Item 2' }
+  ]
 
-  onDropdownChange(event?: KeyboardEvent) {
+  onDropdownSelected(event?: CustomEvent) {
     // Just to test if method calls gets through...
-    console.log('event');
-    this.open = true;
+    this.selected = event.detail[0];
   }
 
-  log(msg: String)  {
+  onDropdownOpen(event?: CustomEvent) {
     // Just to test if method calls gets through...
-    console.log(msg);
+    console.log('Open event!');
   }
 }
