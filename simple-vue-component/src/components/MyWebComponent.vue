@@ -1,8 +1,8 @@
 <template>
   <div class="my-web-component">
     <h1>Simple Vue WC</h1>
-    <div>Dynamic: {{ msg }}</div>
-    <div>Length = {{ arr.length }}</div>
+    <div>Arr is {{ arr_c }}</div>
+    <div>Length = {{ arr_c.length }}</div>
   </div>
 </template>
 
@@ -12,9 +12,27 @@
     props: {
       msg: String,
       arr: {
-        type: Array,
-        default: () => []
+        type: [Array, String],
+        default: () => [],
+        on: {
+          receive(newCount, oldCount) {
+            console.log('gottttt', newCount, oldCount)
+          }
+        }
       }
+    },
+    computed: {
+      arr_c() {
+        let result = this.arr;
+        if (typeof this.arr === 'string') {
+          try {
+            result = JSON.parse(result);
+          } catch (error) {
+            result = [];
+          }
+        }
+        return result;
+      },
     }
   }
 </script>
