@@ -1,0 +1,1 @@
+`/zen-multiselect-custom-element/index.js` is a built version of zen multiselect built with command `vue-cli-service build --target wc --name zen-multiselect-custom-el-poc 'packages/multiselect-custom-el-poc/Multiselect.vue'`
