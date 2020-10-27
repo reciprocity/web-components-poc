@@ -2,7 +2,7 @@
   <div id="app">
     <div class="multiselect-container">
       <p>Custom element:</p>
-      <zen-multiselect2
+      <zen-multiselect-custom-el-poc
         id="multiselect1"
         class="multisel"
         :options="JSON.stringify(options)"
@@ -17,7 +17,7 @@
         multiple="true"
         track-by="value"
       >
-      </zen-multiselect2>
+      </zen-multiselect-custom-el-poc>
     </div>
     <p><b>Selected:</b> <small>{{ selected }}</small></p>
     <button @click="addItem()">Add item</button>

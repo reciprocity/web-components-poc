@@ -7,7 +7,7 @@
   <my-web-component msg="{{ msg.value }}"></my-web-component>
   <input type="text" [formControl]="msg">
   <div class="multiselect-container">
-    <zen-multiselect2
+    <zen-multiselect-custom-el-poc
       [options]="options"
       [value]="selected"
       (open)="onDropdownOpen($event)"
@@ -17,7 +17,7 @@
       multiple="true"
       track-by="value"
       show-checkboxes="true"
-    ></zen-multiselect2>
+    ></zen-multiselect-custom-el-poc>
   </div>
   <vanilla-comp></vanilla-comp>
   <button (click)="log('jan')">Log</button>
